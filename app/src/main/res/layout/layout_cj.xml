@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="@dimen/abc_action_bar_content_inset_material"
+        android:paddingRight="@dimen/abc_action_bar_content_inset_material"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/tv_kcm"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="left"
+            android:text="课程名称" />
+
+        <TextView
+            android:id="@+id/tv_xf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="70dp"
+            android:layout_toLeftOf="@+id/tv_cj"
+            android:layout_toStartOf="@+id/tv_cj"
+            android:gravity="center"
+            android:text="学分" />
+
+        <TextView
+            android:id="@+id/tv_cj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_xf"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="成绩" />
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout   
+        android:layout_width="fill_parent"   
+        xmlns:android="http://schemas.android.com/apk/res/android"   
+        android:orientation="vertical"  
+        android:layout_height="wrap_content"   
+        android:id="@+id/MyListItem"   
+        android:paddingBottom="3dip"
+        android:paddingLeft="10dip"
+    android:paddingTop="5dip">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:id="@+id/settings_title"
+            android:textColor="#000"
+            android:textSize="20dip"
+            android:text="666"
+            android:padding="7dip">
+        </TextView>
+        <TextView   
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:id="@+id/settings_content"
+            android:text="666"
+            android:paddingLeft="8dip">
+        </TextView>  
+</LinearLayout> 

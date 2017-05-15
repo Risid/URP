@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/relativeLayout1"
+        android:layout_marginTop="100px"
+        android:layout_marginRight="50px"
+        android:layout_marginLeft="50px"
+        android:layout_marginBottom="100px">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/ll_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10px">
+            <TextView
+                android:text="证件号"
+                android:id="@+id/textView1"
+                android:layout_height="match_parent"
+                android:layout_width="200px"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical" />
+            <EditText
+                android:inputType="phone"
+                android:id="@+id/editText1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/ll_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_id"
+            android:layout_marginBottom="10px">
+            <TextView
+                android:text="密码"
+                android:id="@+id/tv_login_pwd"
+                android:layout_width="200px"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical" />
+            <EditText
+                android:inputType="textPassword"
+                android:id="@+id/et_login_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/ll_login_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_pwd"
+            android:layout_margin="10px">
+            <CheckBox
+                android:text="记住密码"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/cb_remember"
+                android:layout_weight="1" />
+            <CheckBox
+                android:text="自动登录"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/cb_auto_login"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <Button
+            android:text="登录"
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_login_settings" />
+    </RelativeLayout>
+</LinearLayout>

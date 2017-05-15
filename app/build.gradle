@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+    defaultConfig {
+        applicationId 'com.risid.urp'
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName '0.08'
+        ndk {
+            // Specifies the ABI configurations of your native
+            // libraries Gradle should build and package with your APK.
+            abiFilters 'armeabi','x86'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:support-v4:25.3.0'
+    compile 'com.android.support:support-annotations:25.3.0'
+    compile 'org.jsoup:jsoup:1.8.3'
+    compile 'com.android.support:design:25.3.0'
+    compile 'me.imid.swipebacklayout.lib:library:1.0.0'
+    compile 'com.rmtheis:tess-two:6.0.0'
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.bm.photoview:library:1.4.1'
+    compile 'me.grantland:autofittextview:0.2.1'
+    compile 'jp.wasabeef:recyclerview-animators:2.2.6'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+}
