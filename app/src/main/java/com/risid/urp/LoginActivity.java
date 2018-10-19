@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -168,7 +169,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-
 
 
         setTitle(getString(R.string.login));
@@ -379,5 +379,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void getDataSession() {
         handler.sendEmptyMessage(urlUtil.SESSION);
+    }
+
+    @Override
+    public void getCookie(String data) {
+
     }
 }

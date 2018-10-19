@@ -196,4 +196,9 @@ public class ZjsjActivity extends SwipeBackAppActivity implements GetNetData {
     public void getDataSession() {
         handler.sendEmptyMessage(urlUtil.SESSION);
     }
+
+    @Override
+    public void getCookie(String data) {
+
+    }
 }

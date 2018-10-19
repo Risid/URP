@@ -413,4 +413,9 @@ public class MainActivity extends AppCompatActivity implements GetNetData {
     public void getDataSession() {
         handler.sendEmptyMessage(urlUtil.SESSION);
     }
+
+    @Override
+    public void getCookie(String data) {
+
+    }
 }

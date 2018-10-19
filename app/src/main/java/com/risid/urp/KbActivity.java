@@ -135,4 +135,9 @@ public class KbActivity extends AppCompatActivity implements GetNetData{
     public void getDataSession() {
         handler.sendEmptyMessage(urlUtil.SESSION);
     }
+
+    @Override
+    public void getCookie(String data) {
+
+    }
 }

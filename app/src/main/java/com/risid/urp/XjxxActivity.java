@@ -174,4 +174,9 @@ public class XjxxActivity extends SwipeBackAppActivity implements GetNetData{
         handler.sendEmptyMessage(urlUtil.SESSION);
     }
 
+    @Override
+    public void getCookie(String data) {
+
+    }
+
 }

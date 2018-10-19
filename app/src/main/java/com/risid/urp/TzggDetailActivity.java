@@ -163,4 +163,9 @@ public class TzggDetailActivity extends SwipeBackAppActivity implements GetNetDa
     public void getDataSession() {
 
     }
+
+    @Override
+    public void getCookie(String data) {
+
+    }
 }

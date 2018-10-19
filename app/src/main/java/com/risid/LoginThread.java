@@ -156,4 +156,9 @@ public class LoginThread extends Thread implements GetNetData{
     public void getDataSession() {
 
     }
+
+    @Override
+    public void getCookie(String data) {
+
+    }
 }

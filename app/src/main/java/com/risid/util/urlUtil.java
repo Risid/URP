@@ -6,6 +6,7 @@ package com.risid.util;
 public class urlUtil {
     public static String JWCURL = "http://219.226.101.61/jiawu3.html";
     //主url
+
     public static String URL = "http://202.207.247.49/";
 //    public static String URL2 = "http://202.207.247.44:8064/";
 //    public static String URL3 = "http://202.207.247.44:8065/";
@@ -15,7 +16,11 @@ public class urlUtil {
     //学籍信息
     public final static String URL_XJXX = "xjInfoAction.do?oper=xjxx";
     //学分绩点
-    public final static String URL_XFDJ = "http://202.207.247.42/Hander/Cj/CjAjax.ashx";
+//    public final static String URL_XFDJ = "http://202.207.247.42/";
+    public final static String URL_XFDJ = "https://stu.tyut.risid.com/";
+
+    public final static String URL_XFDJ_QUERY = "Hander/Cj/CjAjax.ashx";
+
     //实践成绩
     public final static String URL_ZJSJ = "xszzsjcjbAction.do?oper=viewByStudent";
     ////本学期课表
@@ -32,7 +37,7 @@ public class urlUtil {
     //不及格成绩
     public final static String URL_BJG = "gradeLnAllAction.do?type=ln&oper=bjg";
     //通知公告
-    public final static String URL_TZGG = "detail.asp?bigid=7&Page=";
+    public final static String URL_TZGG = "tzgg.htm";
     //jwc网站
     public final static String URL_JWC = "http://jwc.tyut.edu.cn/";
     //评教列表
@@ -45,6 +50,8 @@ public class urlUtil {
     public final static String NET_FAIL = "FAIL";
     //session失效
     public final static String SESSION_FAIL = "SESSION_FAIL";
+
+    public final static String URL_XFJD_LOGIN = "Hander/LoginAjax.ashx";
 
     //handler   返回数据成功
     public final static int DATA_SUCCESS = 0x01;

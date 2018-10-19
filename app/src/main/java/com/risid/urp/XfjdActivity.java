@@ -41,6 +41,8 @@ public class XfjdActivity extends SwipeBackAppActivity implements GetNetData {
 
     private Toolbar toolbar;
     private String zjh;
+    private String pwd;
+    private Sp sp;
 
     Handler handler = new Handler() {
         public void handleMessage(Message msg) {
@@ -120,10 +122,11 @@ public class XfjdActivity extends SwipeBackAppActivity implements GetNetData {
         setContentView(R.layout.activity_xfjd);
         rv_xfjd = (RecyclerView) findViewById(R.id.rv_xfjd);
 
-        Sp sp = new Sp(XfjdActivity.this);
+        sp = new Sp(XfjdActivity.this);
         // cookie = intent.getStringExtra("cookie");
-        cookie = sp.getCookie();
+//        cookie = sp.getCookieJD();
         zjh = sp.getZjh();
+        pwd = sp.getMm();
         initView();
         getInfo();
     }
@@ -149,11 +152,18 @@ public class XfjdActivity extends SwipeBackAppActivity implements GetNetData {
         new Thread() {
             public void run() {
                 String url = urlUtil.URL_XFDJ;
+                Map<String, String> loginMap = new HashMap<>();
+                loginMap.put("u", zjh);
+                loginMap.put("p", pwd);
+                loginMap.put("r", "on");
+                netUtil.doPost(url + urlUtil.URL_XFJD_LOGIN, null, loginMap, XfjdActivity.this);
+
+                cookie = sp.getCookieJD();
                 Map<String, String> xfjdMap = new HashMap<>();
                 xfjdMap.put("xh", zjh);
                 xfjdMap.put("sort", "jqzypm,xh");
                 xfjdMap.put("do", "xsgrcj");
-                netUtil.doPost(url, null, xfjdMap, XfjdActivity.this);
+                netUtil.doPost(url+urlUtil.URL_XFDJ_QUERY, cookie, xfjdMap, XfjdActivity.this);
             }
         }.start();
     }
@@ -172,6 +182,12 @@ public class XfjdActivity extends SwipeBackAppActivity implements GetNetData {
     @Override
     public void getDataSession() {
         handler.sendEmptyMessage(urlUtil.SESSION);
+    }
+
+    @Override
+    public void getCookie(String data) {
+        Sp sp = new Sp(this);
+        sp.setCookieJD(data);
     }
 
 }

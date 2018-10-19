@@ -8,7 +8,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
-        versionName '0.08'
+        versionName '0.11.lcy'
         ndk {
             // Specifies the ABI configurations of your native
             // libraries Gradle should build and package with your APK.

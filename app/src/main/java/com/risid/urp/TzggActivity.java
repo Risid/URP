@@ -28,6 +28,7 @@ import com.risid.util.urlUtil;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
@@ -46,21 +47,22 @@ public class TzggActivity extends SwipeBackAppActivity implements GetNetData {
     private Toolbar toolbar;
     private RecyclerView rv_tzgg;
     private TzggAdapter tzggAdapter;
-    private int page = 1;
+    private String nextUrl = "tzgg.htm";
     private List<TzggModels> list_tz = new ArrayList<>();
     private int count = 0;
+    private boolean isLoading = false;
+    private
     Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             progressDialog.dismiss();
             switch (msg.what) {
                 case 1:
-                    if (page > 1){
+                    if (nextUrl.equals("tzgg.htm")){
                         tzggAdapter.notifyItemRangeInserted(list_tz.size() - count, count);
 
                     }else {
                         setRecyclerView();
                     }
-                    page++;
 
 
 
@@ -103,8 +105,8 @@ public class TzggActivity extends SwipeBackAppActivity implements GetNetData {
 
                     //时判断界面显示的最后item的position是否等于itemCount总数-1也就是最后一个item的position
                     //如果相等则说明已经滑动到最后了
-                    if(lastPosition == recyclerView.getLayoutManager().getItemCount()-1){
-                        getInfo(page);
+                    if(lastPosition == recyclerView.getLayoutManager().getItemCount()-1 && !isLoading){
+                        getInfo(nextUrl);
                     }
 
                 }
@@ -123,7 +125,7 @@ public class TzggActivity extends SwipeBackAppActivity implements GetNetData {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tzgg);
         initView();
-        getInfo(page);
+        getInfo(nextUrl);
     }
 
     private void initView() {
@@ -145,10 +147,11 @@ public class TzggActivity extends SwipeBackAppActivity implements GetNetData {
 
     }
 
-    public void getInfo(final int page) {
+    public void getInfo(final String page) {
+        isLoading = true;
         new Thread() {
             public void run() {
-                netUtil.getPostData(urlUtil.URL_JWC + urlUtil.URL_TZGG + page, "", TzggActivity.this);
+                netUtil.getPostData(urlUtil.URL_JWC + page, "", TzggActivity.this);
 
             }
         }.start();
@@ -159,6 +162,8 @@ public class TzggActivity extends SwipeBackAppActivity implements GetNetData {
 
 
         Document document = Jsoup.parse(Data);
+
+        nextUrl = document.getElementsByClass("Next").get(0).attr("href");
         Elements es = document.select("[style=height: 310px]").select("table[align=center]").select("tbody").select("tr");
         count = es.size();
         // Log.d("内容",es.toString());
@@ -183,6 +188,11 @@ public class TzggActivity extends SwipeBackAppActivity implements GetNetData {
 
     @Override
     public void getDataSession() {
+
+    }
+
+    @Override
+    public void getCookie(String data) {
 
     }
 }

@@ -234,16 +234,16 @@ public class JxpgListActivity extends SwipeBackAppActivity implements GetNetData
                     loginpg(clickMap);
                     //评估核心代码
                     Map<String, String> pjMap = new HashMap<String, String>();
-                    clickMap.put("wjbm", list_pg.get(position).getWjbm());
-                    clickMap.put("bpr", list_pg.get(position).getBpr());
-                    clickMap.put("pgnr", list_pg.get(position).getPgnr());
-                    clickMap.put("0000000136","25_0.95" );
-                    clickMap.put("0000000137","25_0.95" );
-                    clickMap.put("0000000138","30_0.95" );
-                    clickMap.put("0000000139","20_0.95" );
+                    pjMap.put("wjbm", list_pg.get(position).getWjbm());
+                    pjMap.put("bpr", list_pg.get(position).getBpr());
+                    pjMap.put("pgnr", list_pg.get(position).getPgnr());
+                    pjMap.put("0000000136","25_0.95" );
+                    pjMap.put("0000000137","25_0.95" );
+                    pjMap.put("0000000138","30_0.95" );
+                    pjMap.put("0000000139","20_0.95" );
 
 
-                    clickMap.put("zgpj", getString(R.string.pgnr));
+                    pjMap.put("zgpj", getString(R.string.pgnr));
                     login(pjMap);
                 }
             }.start();
@@ -271,6 +271,11 @@ public class JxpgListActivity extends SwipeBackAppActivity implements GetNetData
                     public void getDataSession() {
 
                     }
+
+                    @Override
+                    public void getCookie(String data) {
+
+                    }
                 });
     }
 
@@ -292,6 +297,11 @@ public class JxpgListActivity extends SwipeBackAppActivity implements GetNetData
                     public void getDataSession() {
                         handler.sendEmptyMessage(urlUtil.SESSION);
                     }
+
+                    @Override
+                    public void getCookie(String data) {
+
+                    }
                 });
 
     }
@@ -312,6 +322,11 @@ public class JxpgListActivity extends SwipeBackAppActivity implements GetNetData
     @Override
     public void getDataSession() {
         handler.sendEmptyMessage(urlUtil.SESSION);
+    }
+
+    @Override
+    public void getCookie(String data) {
+
     }
 
 

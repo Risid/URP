@@ -215,4 +215,9 @@ public class
     public void getDataSession() {
         handler.sendEmptyMessage(urlUtil.SESSION);
     }
+
+    @Override
+    public void getCookie(String data) {
+
+    }
 }

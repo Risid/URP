@@ -11,6 +11,7 @@ public class Sp {
     private Context c;
     private static final String SHARE_PREFERENCES = "set";
     private static final String COOKIE = "cookie";
+    private static final String COOKIE_JD = "cookie2";
     private static final String Zjh = "zjh";
     private static final String Mm = "mm";
     private static final String Url="url";
@@ -21,6 +22,14 @@ public class Sp {
         super();
         this.c = c;
         spf = c.getSharedPreferences(SHARE_PREFERENCES, Context.MODE_PRIVATE);
+    }
+
+    public  String getCookieJD() {
+        return spf.getString(COOKIE_JD, null);
+    }
+
+    public  void setCookieJD(String cookie) {
+        spf.edit().putString(COOKIE_JD, cookie).commit();
     }
 
     public  String getCookie() {

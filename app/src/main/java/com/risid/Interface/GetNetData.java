@@ -10,4 +10,6 @@ public interface GetNetData {
     void getDataFail();
     //Session到期
     void getDataSession();
+
+    void getCookie(String data);
 }

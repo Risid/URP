@@ -5,6 +5,7 @@ import com.risid.Interface.GetZpInterface;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -20,6 +21,7 @@ public class netUtil {
 
         Set<Map.Entry<String, String>> entries = postMap.entrySet();
 
+        boolean isReturnResponse = false;
         FormBody.Builder formBodyBuilder = new FormBody.Builder();
 
         for(Map.Entry<String, String> entry : entries){
@@ -31,6 +33,8 @@ public class netUtil {
         Request.Builder requestBuilder= new Request.Builder().url(url).post(formBodyBuilder.build());
         if (cookie != null){
             requestBuilder.addHeader("Cookie", cookie);
+        }else {
+            isReturnResponse = true;
         }
         Request request = requestBuilder.build();
         Response response;
@@ -39,7 +43,20 @@ public class netUtil {
         try {
             response = client1.newCall(request).execute();
             if (response.code() == 200 || response.code() == 500 ) {
-                getNetData.getDataSuccess( response.body().string());
+                if (isReturnResponse){
+                    List<String> cookies = response.headers("set-cookie");
+                    StringBuilder stringBuilder = new StringBuilder();
+                    for (int i = 0; i < cookies.size(); i++) {
+                        stringBuilder.append(cookies.get(i));
+                        stringBuilder.append(';');
+                    }
+
+
+                    getNetData.getCookie(stringBuilder.toString());
+                }else {
+                    getNetData.getDataSuccess( response.body().string());
+                }
+
             }else {
                 getNetData.getDataFail();
             }
@@ -64,7 +81,12 @@ public class netUtil {
         try {
             response = client1.newCall(request).execute();
             if (response.code() == 200 || response.code() == 500) {
-                getData.getDataSuccess(new String(response.body().bytes(), Charset.forName("gb2312")));
+                if (url.contains(urlUtil.URL_JWC)){
+                    getData.getDataSuccess(new String(response.body().bytes()));
+                }else {
+                    getData.getDataSuccess(new String(response.body().bytes(), Charset.forName("gb2312")));
+                }
+
             }else {
                 getData.getDataFail();
             }
